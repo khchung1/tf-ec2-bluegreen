@@ -1,6 +1,6 @@
 terraform {
 
-  required_version = "5.25.0"
+  required_version = "1.9.0"
   backend "s3" {
     bucket = "sctp-ce6-tfstate"             # Terraform State bucket name
     key    = "KokHui-ec2-bluegreen.tfstate" # Name of your tfstate file
