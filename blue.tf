@@ -8,6 +8,7 @@ data "aws_ami" "blue" {
   }
 }
 
+#create 2 instances and deploy each in the private subnets
 resource "aws_instance" "blue" {
   count = var.enable_blue_env ? 2 : 0
 
@@ -24,6 +25,7 @@ resource "aws_instance" "blue" {
   }
 }
 
+#create a target group called blue
 resource "aws_lb_target_group" "blue" {
   name     = "${var.name}-blue-tg-lb"
   port     = 80
@@ -37,7 +39,7 @@ resource "aws_lb_target_group" "blue" {
     interval = 5
   }
 }
-
+#attached the instances created in aws_instance.blue into the target group blue
 resource "aws_lb_target_group_attachment" "blue" {
   count            = length(aws_instance.blue)
   target_group_arn = aws_lb_target_group.blue.arn
