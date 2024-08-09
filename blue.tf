@@ -21,7 +21,7 @@ resource "aws_instance" "blue" {
   })
   associate_public_ip_address = true
   tags = {
-    Name = "${var.name}-blue-${count.index}"
+    Name = "${var.name}-blue-${count.index + 1}"
   }
 }
 
