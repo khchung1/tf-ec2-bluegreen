@@ -24,7 +24,7 @@ jobs:
       run: terraform init
 
     - name: Terraform Apply
-      run: terraform apply -no-color -auto-approve -var 'blue-90'
+      run: terraform apply -no-color -auto-approve
 
     - name: Export terraform outputs
       id: tfout
